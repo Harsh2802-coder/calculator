@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+       body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: black;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .input {
+            width: 100%;
+            height: 50px;
+            font-size: 1.5rem;
+            padding: 5px;
+            text-align: right;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .input:hover {
+            background-color: #ffcccc;
+        }
+
+        .chota {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .row {
+            flex: 1;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: grey;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .row:hover {
+            background-color: #666;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .box {
+                padding: 15px;
+            }
+
+            .input {
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .row {
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+</style>
+<body>
+    <div class="box">
+        <input class="input" type="text">
+    <div class="chota">
+        <div class="row">AC</div>
+        <div class="row">del</div>
+        <div class="row">A+</div>
+        <div class="row">+</div>
+
+    </div>
+    <div class="chota">
+        <div class="row">9</div>
+        <div class="row">8</div>
+        <div class="row">7</div>
+        <div class="row">*</div>
+
+    </div>
+    <div class="chota">
+        <div class="row">6</div>
+        <div class="row">5</div>
+        <div class="row">4</div>
+        <div class="row">/</div>
+
+    </div>
+    <div class="chota">
+        <div class="row">3</div>
+        <div class="row">2</div>
+        <div class="row">1</div>
+        <div class="row">-</div>
+
+    </div>
+    <div class="chota">
+        <div class="row ">0</div>
+        <div class="row">.</div>
+        <div class="row">%</div>
+        <div class="row">=</div>
+       
+
+    </div>
+</div>
+<script>
+    let string= "";
+    let rows = document.querySelectorAll(".row");
+    Array.from(rows).forEach((row)=>{
+        row.addEventListener("click",(e)=>{
+            if(e.target.innerHTML == "="){
+                string = eval(string);
+                document.querySelector("input").value = string;
+            }
+            else if(e.target.innerHTML == "AC"){
+                string = ""
+                document.querySelector("input").value= string;
+            }
+            else if(e.target.innerHTML == "del"){
+                string = string.slice(0, -1);
+                document.querySelector("input").value= string;
+            }
+           
+            else{
+                console.log(e.target);
+                string = string + e.target.innerHTML;
+                document.querySelector("input").value = string;
+                
+            }
+        })
+
+    })
+</script>
+</body>
+</html>
