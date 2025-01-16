@@ -1,2 +1,2 @@
 # calculator
-Author - Harsh Anand
+Author - Harsh Anand(IIT BHU)
